@@ -1,5 +1,5 @@
 import Articles from "../components/Articles";
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "../components/Layout";
 
 const ArticleRoutes = () => {
@@ -7,7 +7,6 @@ const ArticleRoutes = () => {
     <div>
       <Router>
         <Routes>
-          {/* <Route path="/" element={<News />}> */}
           <Route path="/" element={<Layout />} />
           <Route
             path="/publisher/:publisherId/articles"

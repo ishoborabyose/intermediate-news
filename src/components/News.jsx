@@ -22,14 +22,6 @@ const News = () => {
   return (
     <div className="bg-white max-w-7xl px-3 mx-auto sm:mt-[255px] lg:mt-[255px] pt-40">
       <div className="flex items-center justify-end"></div>
-      {/* <Router>
-        <Routes>
-          <Route
-            path="/publisher/:publisherId/articles"
-            element={<Articles />}
-          />
-        </Routes>
-      </Router> */}
 
       <div className="flex justify-between">
         <h1
@@ -65,7 +57,6 @@ const News = () => {
                   <h3 className="text-[#1f1d21] group-hover:text-[#bc0031] group-hover:underline sm:text-sm  text-base leading-[27.6px]  mb-4  font-semibold ">
                     {item.title}
                   </h3>
-                  {/* <p>{item.url}</p> */}
                 </div>
               </div>
             );
