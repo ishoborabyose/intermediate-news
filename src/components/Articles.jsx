@@ -41,7 +41,7 @@ const Articles = () => {
           Articles from {publisherId}
         </h1>
 
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-1 grid-cols-3 gap-6">
           {data.map((article, index) => {
             return (
               <div
@@ -54,11 +54,11 @@ const Articles = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="h-[200px] overflow-hidden">
+                  <div className="h-[200px]  overflow-clip">
                     <img
                       src={article.urlToImage}
                       alt={article.title}
-                      className="object-cover w-full h-full"
+                      className="object-cover w-full h-full hover:scale-150 duration-500 cursor-pointer"
                     />
                   </div>
                   <div className="px-4 py-2">

@@ -42,7 +42,7 @@ const Publishers = () => {
                 <div>
                   <Link
                     to={`/publisher/${item.id}/articles`}
-                    className=" text-sm sm:text-[18px] mb-[20px] group-hover:text-[#bc0031] group-hover:underline leading-[27.6px] font-semibold"
+                    className="text-sm sm:text-[18px] mb-[20px] group-hover:text-[#bc0031] group-hover:underline leading-[27.6px] font-semibold"
                     onClick={() => handleClick(item.id)}
                   >
                     {item.name}

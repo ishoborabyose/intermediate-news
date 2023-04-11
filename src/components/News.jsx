@@ -20,9 +20,7 @@ const News = () => {
     window.location.href = url;
   };
   return (
-    <div className="bg-white max-w-7xl px-3 mx-auto sm:mt-[255px] lg:mt-[255px] pt-40">
-      <div className="flex items-center justify-end"></div>
-
+    <div className="bg-white max-w-7xl px-3 mx-auto sm:pt-20 pt-40">
       <div className="flex justify-between">
         <h1
           className={`text-[#1f1d21]  text-[30px] leading-[48px] font-semibold mb-[24px]`}
@@ -40,18 +38,20 @@ const News = () => {
                 key={index}
                 className={`${
                   index === 0
-                    ? "col-span-3 border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
+                    ? "col-span-3 sm:col-span-1 border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
                     : "border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
                 }`}
               >
-                <img
-                  src={item.urlToImage}
-                  className={`${
-                    index === 0
-                      ? "h-96 w-full object-cover object-"
-                      : "w-full object-cover h-[190px] sm:h-[159px]"
-                  } `}
-                />
+                <div className="overflow-clip">
+                  <img
+                    src={item.urlToImage}
+                    className={`hover:scale-150 duration-500 cursor-pointer ${
+                      index === 0
+                        ? "h-[290px] sm:h-full w-full object-cover object-"
+                        : "w-full object-cover sm:h-full h-[190px] "
+                    } `}
+                  />
+                </div>
 
                 <div className="px-[1rem] pt-[1rem] pb-[1.5rem]">
                   <h3 className="text-[#1f1d21] group-hover:text-[#bc0031] group-hover:underline sm:text-sm  text-base leading-[27.6px]  mb-4  font-semibold ">

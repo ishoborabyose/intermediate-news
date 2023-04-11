@@ -48,23 +48,21 @@ const Navbar = () => {
   return (
     <div className="shadow-shadow1- bg-white fixed z-10 w-full">
       <div
-        className={`flex justify-between duration-500 ease-in-out  items-center sm:py-1  max-w-7xl px-3 mx-auto ${
-          scrolled ? "py-1" : "py-[21px]"
+        className={`flex justify-between duration-500 ease-in-out sm:grid sm:grid-cols-2 items-center sm:py-1  max-w-7xl px-3 mx-auto ${
+          scrolled ? "py-1 " : "py-[21px] "
         }`}
       >
-        {" "}
         {scrolled ? (
           <img
-            className="object-cover w-[132px] cursor-pointer h-[45px]  sm:hidden "
+            className="object-cover w-[132px]   cursor-pointer h-[45px]  "
             src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
           />
         ) : (
           <img
-            className="w-[381px] object-cover  cursor-pointer h-[50px] sm:hidden"
+            className="w-[381px] object-cover sm:w-[132px] sm:h-[45px]  cursor-pointer h-[50px]"
             src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
           />
         )}
-        <img className="object-cover sm:block hidden" src="/images/small.PNG" />
         <div className="flex items-center gap-[12px] sm:hidden ">
           <div className=" relative   flex mr-[1px] ">
             <div className=" absolute top-[30%] border-l pl-2 left-[360px]">
@@ -82,13 +80,8 @@ const Navbar = () => {
           </div>
         </div>
         <div className="hidden  sm:flex gap-3">
-          <button className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#FEEFEF] text-[#F33A3A] hover:bg-[#FED7D7] hover:text-[#E71313] transition duration-200 ease-in-out">
-            <CiHeart className="w-5 h-5" />
-            <span>Favorites</span>
-          </button>
-
           <div className="relative flex">
-            <div className="absolute top-[30%] border-l pl-2 left-[54px]">
+            <div className="absolute  top-[30%] border-l pl-2 right-1">
               <CiSearch
                 onClick={() => performSearch()}
                 className="w-5 h-5 cursor-pointer"
@@ -98,7 +91,7 @@ const Navbar = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search..."
-              className="w-[360px] h-[42px] rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px] pl-[12px] border"
+              className="w-full h-[42px]  rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px] pl-[12px] border"
             />
           </div>
         </div>
