@@ -5,13 +5,17 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { fetchData } from "./data";
 import { searchArticle } from "../features/articles";
+import { searchNews } from "../features/news";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.article.value);
+  const data = useSelector((state) => state);
+  console.log("===========ggggggggggg");
+  console.log(data);
+  console.log("====================================");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +33,7 @@ const Navbar = () => {
     const fetchDataAsync = async () => {
       const data = await fetchData(searchQuery);
       dispatch(searchArticle({ articles: data.articles, searchQuery }));
+      //dispatch(searchNews({ articles: data.articles, searchQuery }));
     };
     fetchDataAsync();
   }, [dispatch, searchQuery]);

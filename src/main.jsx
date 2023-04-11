@@ -6,11 +6,13 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import articleReducer from "./features/articles";
 import publishersReducer from "./features/publishers";
+import NewsReducer from "./features/news";
 
 const store = configureStore({
   reducer: {
     article: articleReducer,
     publisher: publishersReducer,
+    news: NewsReducer,
   },
 });
 

@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 const Publishers = () => {
   const data = useSelector((state) => state.publisher.value);
-  console.log(data, "selector");
-
   const dispatch = useDispatch();
 
   useEffect(() => {

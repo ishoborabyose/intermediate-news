@@ -2,11 +2,18 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getNews } from "../features/news";
 
 const Articles = () => {
   const { publisherId } = useParams();
-  const [articles, setArticles] = useState([]);
   const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
+  const data = useSelector((state) => state.news.value);
+  console.log("++++++++++++++++++");
+  console.log(data);
+  console.log("====================================");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchDataAsync = async () => {
@@ -14,10 +21,10 @@ const Articles = () => {
         `https://newsapi.org/v2/top-headlines?sources=${publisherId}&apiKey=${API_KEY}`
       );
       const data = await response.json();
-      setArticles(data.articles);
+      dispatch(getNews(data.articles));
     };
     fetchDataAsync();
-  }, [publisherId]);
+  }, [publisherId, dispatch]);
 
   const handleClick = (url) => {
     window.location.href = url;
@@ -35,7 +42,7 @@ const Articles = () => {
         </h1>
 
         <div className="grid grid-cols-3 gap-6">
-          {articles.map((article, index) => {
+          {data.map((article, index) => {
             return (
               <div
                 onClick={() => handleClick(article.url)}
