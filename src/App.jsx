@@ -1,4 +1,4 @@
-import ArticleRoutes from "./routes/articleRoutes";
+import ArticleRoutes from "../src/routes/ArticleRoutes";
 
 const App = () => {
   return (
