@@ -33,15 +33,28 @@ const Navbar = () => {
     const fetchDataAsync = async () => {
       const data = await fetchData(searchQuery);
       dispatch(searchArticle({ articles: data.articles, searchQuery }));
-      //dispatch(searchNews({ articles: data.articles, searchQuery }));
+      dispatch(searchNews({ articles: data.articles, searchQuery }));
     };
     fetchDataAsync();
   }, [dispatch, searchQuery]);
 
+  // const performSearch = () => {
+  //   const results = data.filter((item) =>
+  //     item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  //   );
+  //   setSearchResults(results);
+  // };
+
   const performSearch = () => {
-    const results = data.filter((item) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const allArticles = data.articles.value;
+    const allNews = data.news.value;
+
+    const results = allArticles
+      .concat(allNews)
+      .filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
     setSearchResults(results);
   };
 

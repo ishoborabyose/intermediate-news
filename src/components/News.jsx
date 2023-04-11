@@ -29,7 +29,7 @@ const News = () => {
         </h1>
       </div>
       {}
-      <div className="grid sm:grid-cols-1 grid-cols-3 gap-[24px]">
+      <div className="grid sm:grid-cols-1  grid-cols-3 gap-[24px]">
         {data &&
           data.map((item, index) => {
             return (
@@ -38,7 +38,7 @@ const News = () => {
                 key={index}
                 className={`${
                   index === 0
-                    ? "col-span-3 sm:col-span-1 border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
+                    ? "col-span-3 sm:col-span-1  border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
                     : "border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
                 }`}
               >

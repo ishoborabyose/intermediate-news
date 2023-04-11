@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getNews } from "../features/news";
@@ -31,7 +31,7 @@ const Articles = () => {
   };
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="bg-white max-w-7xl px-3 mx-auto pb-[64px] pt-40">
         <h1
           className={
