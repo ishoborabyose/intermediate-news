@@ -10,9 +10,6 @@ const Articles = () => {
   const { publisherId } = useParams();
   const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
   const data = useSelector((state) => state.news.value);
-  console.log("++++++++++++++++++");
-  console.log(data);
-  console.log("====================================");
   const dispatch = useDispatch();
 
   useEffect(() => {

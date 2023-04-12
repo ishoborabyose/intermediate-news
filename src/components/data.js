@@ -8,7 +8,6 @@ export async function fetchData(searchQuery = "") {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error("There was a problem with the fetch request:", error);
@@ -36,7 +35,6 @@ export async function fetchDataPublishers() {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    console.log(data.sources);
     return data;
   } catch (error) {
     console.error("There was a problem with the fetch request:", error);
