@@ -18,7 +18,7 @@ const Articles = () => {
   useEffect(() => {
     const fetchDataAsync = async () => {
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?sources=${publisherId}&apiKey=${API_KEY}`
+        `https://news-proxy.netlify.app/api/top-headlines?sources=${publisherId}&apiKey=${API_KEY}`
       );
       const data = await response.json();
       dispatch(getNews(data.articles));

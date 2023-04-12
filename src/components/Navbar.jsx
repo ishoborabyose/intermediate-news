@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { CiHeart } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { fetchData } from "./data";

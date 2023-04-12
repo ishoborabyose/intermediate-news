@@ -1,7 +1,7 @@
 export async function fetchData(searchQuery = "") {
   const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
 
-  const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}&pageSize=10`;
+  const url = `https://news-proxy.netlify.app/api/top-headlines?country=us&apiKey=${API_KEY}&pageSize=10`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -15,7 +15,7 @@ export async function fetchData(searchQuery = "") {
   }
 
   const response = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&q=${searchQuery}`,
+    `https://news-proxy.netlify.app/api/top-headlines?country=us&q=${searchQuery}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_NEWS_API_KEY}`,
@@ -29,7 +29,7 @@ export async function fetchData(searchQuery = "") {
 export async function fetchDataPublishers() {
   const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
 
-  const url = `https://newsapi.org/v2/top-headlines/sources?apiKey=${API_KEY}`;
+  const url = `https://news-proxy.netlify.app/api/top-headlines/sources?apiKey=${API_KEY}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
