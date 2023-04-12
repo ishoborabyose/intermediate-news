@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import News from "./News";
-import Publishers from "./publishers";
+import Publishers from "./Publishers";
 
 const Layout = () => {
   return (
