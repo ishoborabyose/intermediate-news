@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { fetchDataPublishers } from "./data";
 import { getPublishers } from "../features/publishers";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 const Publishers = () => {
   const data = useSelector((state) => state.publisher.value);
@@ -17,11 +16,6 @@ const Publishers = () => {
     };
     fetchDataAsync();
   }, [dispatch]);
-
-  // const handleClick = (publisherId) => {
-  //   const navigate = useNavigate();
-  //   navigate(`/publisher/${publisherId}`);
-  // };
 
   return (
     <div className="bg-white max-w-6xl px-3 mx-auto pb-[64px] mt-20">
@@ -43,7 +37,6 @@ const Publishers = () => {
                   <Link
                     to={`/publisher/${item.id}/articles`}
                     className="text-sm sm:text-[18px] mb-[20px] group-hover:text-[#bc0031] group-hover:underline leading-[27.6px] font-semibold"
-                    // onClick={() => handleClick(item.id)}
                   >
                     {item.name}
                   </Link>
