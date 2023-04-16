@@ -10,6 +10,7 @@ const Articles = () => {
   const { publisherId } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [scrolled, setScrolled] = useState(false);
+
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -43,7 +44,7 @@ const Articles = () => {
   const filteredData = data.filter(
     (article) =>
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.description.toLowerCase().includes(searchQuery.toLowerCase())
+      article.description?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleClick = (url) => {
