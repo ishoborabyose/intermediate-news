@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchData } from "./data";
 import { getTopArticles } from "../features/articles";
+import OneArticle from "./OneArticle";
 
 const News = () => {
+  const [selectedArticle, setSelectedArticle] = useState(null);
   const data = useSelector((state) => state.article.value);
   const dispatch = useDispatch();
 
@@ -16,9 +18,18 @@ const News = () => {
     fetchDataAsync();
   }, [dispatch]);
 
-  const handleClick = (url) => {
-    window.location.href = url;
+  const handleClick = (article) => {
+    setSelectedArticle(article);
   };
+  const handleBackClick = () => {
+    setSelectedArticle(null);
+  };
+
+  if (selectedArticle) {
+    return (
+      <OneArticle article={selectedArticle} onBackClick={handleBackClick} />
+    );
+  }
   return (
     <div className="bg-white max-w-7xl px-3 mx-auto sm:pt-20 pt-40">
       <div className="flex justify-between">
@@ -28,13 +39,12 @@ const News = () => {
           HEADLINES
         </h1>
       </div>
-      {}
       <div className="grid sm:grid-cols-1  grid-cols-3 gap-[24px]">
         {data &&
           data.map((item, index) => {
             return (
               <div
-                onClick={() => handleClick(item.url)}
+                onClick={() => handleClick(item)}
                 key={index}
                 className={`${
                   index === 0
