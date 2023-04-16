@@ -1,13 +1,31 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getNews } from "../features/news";
+import { CiSearch } from "react-icons/ci";
 
 const Articles = () => {
   const { publisherId } = useParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [scrolled, setScrolled] = useState(false);
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 90) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
   const data = useSelector((state) => state.news.value);
   const dispatch = useDispatch();
@@ -22,13 +40,63 @@ const Articles = () => {
     };
     fetchDataAsync();
   }, [publisherId, dispatch]);
+  const filteredData = data.filter(
+    (article) =>
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleClick = (url) => {
     window.location.href = url;
   };
+
   return (
     <div>
-      <Navbar />
+      <div className="shadow-shadow1- bg-white fixed z-10 w-full">
+        <div
+          className={`flex justify-between duration-500 ease-in-out sm:grid sm:grid-cols-2 items-center sm:py-1  max-w-7xl px-3 mx-auto ${
+            scrolled ? "py-1 " : "py-[21px] "
+          }`}
+        >
+          {scrolled ? (
+            <img
+              className="object-cover w-[132px]   cursor-pointer h-[45px]  "
+              src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
+            />
+          ) : (
+            <img
+              className="w-[381px] object-cover sm:w-[132px] sm:h-[45px]  cursor-pointer h-[50px]"
+              src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
+            />
+          )}
+          <div className="flex items-center gap-[12px] sm:hidden ">
+            <div className=" relative   flex mr-[1px] ">
+              <div className=" absolute top-[30%] border-l pl-2 left-[360px]">
+                <CiSearch className="w-5 h-5  cursor-pointer" />
+              </div>
+              <input
+                value={searchQuery}
+                onChange={handleSearch}
+                placeholder="Search..."
+                className="w-[400px] h-[42px] rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px]  pl-[12px]  border"
+              />
+            </div>
+          </div>
+          <div className="hidden  sm:flex gap-3">
+            <div className="relative flex">
+              <div className="absolute  top-[30%] border-l pl-2 right-1">
+                <CiSearch className="w-5 h-5 cursor-pointer" />
+              </div>
+              <input
+                value={searchQuery}
+                onChange={handleSearch}
+                placeholder="Search..."
+                className="w-full h-[42px]  rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px] pl-[12px] border"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="bg-white max-w-7xl px-3 mx-auto pb-[64px] pt-40">
         <h1
           className={
@@ -39,7 +107,7 @@ const Articles = () => {
         </h1>
 
         <div className="grid sm:grid-cols-1 grid-cols-3 gap-6">
-          {data.map((article, index) => {
+          {filteredData.map((article, index) => {
             return (
               <div
                 onClick={() => handleClick(article.url)}

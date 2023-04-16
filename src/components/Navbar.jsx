@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { fetchData } from "./data";
 import { searchArticle } from "../features/articles";
-import { searchNews } from "../features/news";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,27 +28,15 @@ const Navbar = () => {
     const fetchDataAsync = async () => {
       const data = await fetchData(searchQuery);
       dispatch(searchArticle({ articles: data.articles, searchQuery }));
-      dispatch(searchNews({ articles: data.articles, searchQuery }));
     };
     fetchDataAsync();
   }, [dispatch, searchQuery]);
 
-  // const performSearch = () => {
-  //   const results = data.filter((item) =>
-  //     item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  //   );
-  //   setSearchResults(results);
-  // };
-
   const performSearch = () => {
     const allArticles = data.articles.value;
-    const allNews = data.news.value;
-
-    const results = allArticles
-      .concat(allNews)
-      .filter((item) =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+    const results = allArticles.filter((item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     setSearchResults(results);
   };
