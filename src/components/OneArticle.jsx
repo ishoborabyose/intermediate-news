@@ -5,31 +5,54 @@ const OneArticle = ({ article }) => {
   return (
     <div className="bg-white max-w-3xl px-3 mx-auto sm:pt-20 pt-40">
       <div className="flex justify-between">
-        <h1
-          className={`text-[#1f1d21]  text-[30px] leading-[48px] font-semibold mb-[24px]`}
-        >
+        <h1 className={`text-xl font-semibold text-gray-900 mb-10`}>
           {article.title}
         </h1>
       </div>
       <div className="grid sm:grid-cols-1   gap-[24px]">
-        <div onClick={() => handleClick(article.url)} className="border ">
-          <div className="overflow-clip">
-            <img
-              src={article.urlToImage}
-              className={`hover:scale-150 duration-500 cursor-pointer  sm:h-full w-full object-cover object-`}
-            />
-          </div>
-
-          <div className="px-[1rem] pt-[1rem] pb-[1.5rem]">
-            <p className="text-[#1f1d21] text-base leading-[27.6px] mb-4">
-              {article.description}
-            </p>
-            <p className="text-[#1f1d21] text-base leading-[27.6px] mb-4">
-              This page is supposed to display the full text of the article,
-              however, the news API we are using for this exercise project does
-              not deliver the full text of the article. That’s why you are only
-              seeing an article summary.
-            </p>
+        <div
+          onClick={() => handleClick(article.url)}
+          className="bg-white overflow-hidden shadow rounded-lg"
+        >
+          <img
+            className="object-cover h-96 w-full"
+            src={article.urlToImage}
+            alt=""
+          />
+          <div className="p-4">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <img
+                  className="h-10 w-10 rounded-full"
+                  src={article.authorImage}
+                  alt=""
+                />
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-medium text-gray-900">
+                  {article.author}
+                </p>
+                <div className="flex space-x-1 text-sm text-gray-500">
+                  <time dateTime={article.publishedAt}>
+                    {article.publishedAt}
+                  </time>
+                </div>
+              </div>
+            </div>
+            <div className="block mt-2">
+              {/* <p className="text-xl font-semibold text-gray-900">
+                {article.title}
+              </p> */}
+              <p className="mt-3 text-base text-gray-500">
+                {article.description}
+              </p>
+              <p className="mt-3 space-x-1 text-sm text-gray-500 mb-4">
+                This page is supposed to display the full text of the article,
+                however, the news API we are using for this exercise project
+                does not deliver the full text of the article. That’s why you
+                are only seeing an article summary.
+              </p>
+            </div>
           </div>
         </div>
       </div>

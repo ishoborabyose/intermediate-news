@@ -9,6 +9,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
 
@@ -34,11 +35,10 @@ const Navbar = () => {
 
   const performSearch = () => {
     const allArticles = data.articles.value;
-    const results = allArticles.filter((item) =>
+    allArticles.filter((item) =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
-    setSearchResults(results);
+    // setSearchResults(results);
   };
 
   return (
@@ -108,7 +108,7 @@ const Navbar = () => {
           </div>
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {searchResults.map((article) => (
+              {/* {searchResults.map((article) => (
                 <div
                   key={article.title}
                   className="bg-white overflow-hidden shadow rounded-lg"
@@ -148,7 +148,7 @@ const Navbar = () => {
                     </a>
                   </div>
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
