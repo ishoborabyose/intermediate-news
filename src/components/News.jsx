@@ -31,7 +31,7 @@ const News = () => {
     );
   }
   return (
-    <div className="bg-white max-w-7xl px-3 mx-auto sm:pt-20 pt-40">
+    <div className="bg-white max-w-5xl  px-3 mx-auto sm:pt-20 pt-40">
       <div className="flex justify-between">
         <h1
           className={`text-[#1f1d21]  text-[30px] leading-[48px] font-semibold mb-[24px]`}

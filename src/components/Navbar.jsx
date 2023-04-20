@@ -8,7 +8,6 @@ import { searchArticle } from "../features/articles";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
@@ -38,7 +37,6 @@ const Navbar = () => {
     allArticles.filter((item) =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    // setSearchResults(results);
   };
 
   return (
@@ -49,15 +47,37 @@ const Navbar = () => {
         }`}
       >
         {scrolled ? (
-          <img
-            className="object-cover w-[132px]   cursor-pointer h-[45px]  "
-            src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
-          />
+          <div className="bg-gray-900 text-white h-10 w-32 flex justify-center items-center rounded-lg shadow-lg relative">
+            <span className="absolute top-0 left-0 w-10  h-10 flex justify-center items-center bg-gray-800 rounded-full">
+              <span className="text-sm font-extrabold text-white transform -rotate-45">
+                NEWS
+              </span>
+            </span>
+            <h1 className="font-bold text-sm tracking-widest uppercase">
+              <span className="relative z-10 text-gray-500 transform -rotate-45 mr-1 text-xs">
+                f
+              </span>
+              <span className="relative z-10 text-blue-500 transform -rotate-45 text-xs">
+                low
+              </span>
+            </h1>
+          </div>
         ) : (
-          <img
-            className="w-[381px] object-cover sm:w-[132px] sm:h-[45px]  cursor-pointer h-[50px]"
-            src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
-          />
+          <div className="bg-gray-900 text-white h-14 w-48 flex justify-center items-center rounded-lg shadow-lg relative">
+            <span className="absolute top-0 left-0 w-16 h-14 flex justify-center items-center bg-gray-800 rounded-full">
+              <span className="text-xl font-extrabold text-white transform -rotate-45">
+                NEWS
+              </span>
+            </span>
+            <h1 className="font-bold text-lg tracking-widest uppercase">
+              <span className="relative z-10 text-gray-500 transform -rotate-45 mr-1">
+                f
+              </span>
+              <span className="relative z-10 text-blue-500 transform -rotate-45">
+                low
+              </span>
+            </h1>
+          </div>
         )}
         <div className="flex items-center gap-[12px] sm:hidden ">
           <div className=" relative   flex mr-[1px] ">
@@ -92,67 +112,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {searchResults.length > 0 && (
-        <div className="w-full bg-white  shadow-lg">
-          <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between flex-wrap">
-              <div className="w-0 flex-1 flex items-center">
-                <span className="flex p-2 rounded-lg bg-red-800">
-                  <CiSearch className="text-white" />
-                </span>
-                <p className="ml-3 font-medium text-gray-900">
-                  Search Results for "{searchQuery}"
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {/* {searchResults.map((article) => (
-                <div
-                  key={article.title}
-                  className="bg-white overflow-hidden shadow rounded-lg"
-                >
-                  <img
-                    className="object-cover h-96 w-full"
-                    src={article.urlToImage}
-                    alt=""
-                  />
-                  <div className="p-4">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src={article.authorImage}
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900">
-                          {article.author}
-                        </p>
-                        <div className="flex space-x-1 text-sm text-gray-500">
-                          <time dateTime={article.publishedAt}>
-                            {article.publishedAt}
-                          </time>
-                        </div>
-                      </div>
-                    </div>
-                    <a href={article.url} className="block mt-2">
-                      <p className="text-xl font-semibold text-gray-900">
-                        {article.title}
-                      </p>
-                      <p className="mt-3 text-base text-gray-500">
-                        {article.description}
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              ))} */}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -18,7 +18,7 @@ const Publishers = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-white max-w-6xl px-3 mx-auto pb-[64px] mt-20">
+    <div className="bg-white max-w-5xl  px-3 mx-auto pb-[64px] mt-20">
       <h1
         className={`text-[#1f1d21]  text-[30px] leading-[48px] font-semibold mb-[24px]`}
       >

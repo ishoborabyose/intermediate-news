@@ -1,8 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getNews } from "../features/news";
 import { CiSearch } from "react-icons/ci";
 
@@ -10,26 +8,18 @@ const Articles = () => {
   const { publisherId } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
 
-  const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  const handleSearch = (event) => setSearchQuery(event.target.value);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.pageYOffset > 90) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+    const handleScroll = () => setScrolled(window.pageYOffset > 90);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
-  const data = useSelector((state) => state.news.value);
   const dispatch = useDispatch();
+  const data = useSelector((state) => state.news.value);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
@@ -41,15 +31,14 @@ const Articles = () => {
     };
     fetchDataAsync();
   }, [publisherId, dispatch]);
+
   const filteredData = data.filter(
     (article) =>
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.description?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleClick = (url) => {
-    window.location.href = url;
-  };
+  const handleClick = (url) => (window.location.href = url);
 
   return (
     <div>
@@ -79,20 +68,20 @@ const Articles = () => {
                 value={searchQuery}
                 onChange={handleSearch}
                 placeholder="Search..."
-                className="w-[400px] h-[42px] rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px]  pl-[12px]  border"
+                className="w-[400px] h-[42px] rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px] pl-[12px] border"
               />
             </div>
           </div>
-          <div className="hidden  sm:flex gap-3">
+          <div className="hidden sm:flex gap-3">
             <div className="relative flex">
-              <div className="absolute  top-[30%] border-l pl-2 right-1">
+              <div className="absolute top-[30%] border-l pl-2 right-1">
                 <CiSearch className="w-5 h-5 cursor-pointer" />
               </div>
               <input
                 value={searchQuery}
                 onChange={handleSearch}
                 placeholder="Search..."
-                className="w-full h-[42px]  rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px] pl-[12px] border"
+                className="w-full h-[42px] rounded-[4px] text-[#1f1d20] leading-[40px] pr-[54px] pl-[12px] border"
               />
             </div>
           </div>
@@ -113,14 +102,14 @@ const Articles = () => {
               <div
                 onClick={() => handleClick(article.url)}
                 key={index}
-                className=" border  group hover:shadow-hov3 hover:duration-300  rounded-md shadow-sm  duration-300 ease-in-out transition-all cursor-pointer"
+                className="border group hover:shadow-hov3 hover:duration-300 rounded-md shadow-sm duration-300 ease-in-out transition-all cursor-pointer"
               >
                 <Link
                   to={`/article/${article.url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="h-[200px]  overflow-clip">
+                  <div className="h-[200px] overflow-clip">
                     <img
                       src={article.urlToImage}
                       alt={article.title}

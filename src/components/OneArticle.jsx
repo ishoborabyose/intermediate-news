@@ -40,9 +40,6 @@ const OneArticle = ({ article }) => {
               </div>
             </div>
             <div className="block mt-2">
-              {/* <p className="text-xl font-semibold text-gray-900">
-                {article.title}
-              </p> */}
               <p className="mt-3 text-base text-gray-500">
                 {article.description}
               </p>
