@@ -42,22 +42,44 @@ const Articles = () => {
 
   return (
     <div>
-      <div className="shadow-shadow1- bg-white fixed z-10 w-full">
+      <div className="shadow-shadow1- bg-white fixed z-30 w-full">
         <div
-          className={`flex justify-between duration-500 ease-in-out sm:grid sm:grid-cols-2 items-center sm:py-1  max-w-7xl px-3 mx-auto ${
+          className={`flex justify-between duration-500 ease-in-out sm:grid sm:grid-cols-2 items-center sm:py-1  max-w-6xl px-3 mx-auto ${
             scrolled ? "py-1 " : "py-[21px] "
           }`}
         >
           {scrolled ? (
-            <img
-              className="object-cover w-[132px]   cursor-pointer h-[45px]  "
-              src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
-            />
+            <div className=" text-white h-10 w-32 flex justify-center items-center rounded-lg shadow-sm relative">
+              <span className="absolute top-0 left-0 w-10  h-10 flex justify-center items-center  rounded-full">
+                <span className="text-sm font-extrabold  text-gray-800 transform -rotate-45">
+                  NEWS
+                </span>
+              </span>
+              <h1 className="font-bold text-sm tracking-widest uppercase">
+                <span className="relative z-10 text-gray-500 transform -rotate-45 mr-1 text-xs">
+                  f
+                </span>
+                <span className="relative z-10 text-[#bc0031] transform -rotate-45 text-xs">
+                  low
+                </span>
+              </h1>
+            </div>
           ) : (
-            <img
-              className="w-[381px] object-cover sm:w-[132px] sm:h-[45px]  cursor-pointer h-[50px]"
-              src="https://www.shutterstock.com/image-vector/modern-newspaper-logo-template-best-260nw-1283230096.jpg"
-            />
+            <div className=" text-white h-[42px] w-48 sm:h-10 sm:w-32 flex justify-center items-center rounded-lg shadow-sm relative">
+              <span className="absolute top-0 left-0 w-14 h-10 sm:w-10  sm:h-10  flex justify-center items-center  rounded-full">
+                <span className="text-base sm:text-sm font-extrabold  text-gray-800 transform -rotate-45">
+                  NEWS
+                </span>
+              </span>
+              <h1 className="font-bold text-lg sm:text-sm  tracking-widest uppercase">
+                <span className="relative z-10 text-gray-500 transform -rotate-45 mr-1">
+                  f
+                </span>
+                <span className="relative z-10 text-[#bc0031] transform -rotate-45">
+                  low
+                </span>
+              </h1>
+            </div>
           )}
           <div className="flex items-center gap-[12px] sm:hidden ">
             <div className=" relative   flex mr-[1px] ">
@@ -90,7 +112,7 @@ const Articles = () => {
       <div className="bg-white max-w-7xl px-3 mx-auto pb-[64px] pt-40">
         <h1
           className={
-            "text-[#1f1d21] text-[30px] leading-[48px] font-semibold mb-[24px]"
+            "text-gray-500 underline hover:text-[#bc0031] hover:no-underline cursor-pointer text-[30px] leading-[48px]  font-semibold mb-[24px]"
           }
         >
           Articles from {publisherId}
@@ -102,22 +124,33 @@ const Articles = () => {
               <div
                 onClick={() => handleClick(article.url)}
                 key={index}
-                className="border group hover:shadow-hov3 hover:duration-300 rounded-md shadow-sm duration-300 ease-in-out transition-all cursor-pointer"
+                className="border rounded-lg group hover:shadow-hov3 hover:duration-300  shadow-sm duration-300 ease-in-out transition-all cursor-pointer"
               >
                 <Link
                   to={`/article/${article.url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="h-[200px] overflow-clip">
+                  {/* <div className="h-[200px] overflow-clip">
                     <img
                       src={article.urlToImage}
                       alt={article.title}
-                      className="object-cover w-full h-full hover:scale-150 duration-500 cursor-pointer"
+                      className="object-cover rounded-lg w-full h-full hover:scale-150 duration-500 cursor-pointer"
                     />
+                  </div> */}
+                  <div className="overflow-clip relative">
+                    <div className="bg-black opacity-25 rounded-lg absolute w-full h-full z-10"></div>
+                    <img
+                      src={article.urlToImage}
+                      alt={article.title}
+                      className="hover:scale-150 rounded-lg  duration-500 cursor-pointer w-full object-cover sm:h-full h-[190px]"
+                    />
+                    <p className="text-white group-hover:shadow-hov3 font-bold bg-red-900 group-hover:bg-white group-hover:text-red-900 group-hover:underline p-1 absolute bottom-2 left-2 rounded-md z-20">
+                      Read More
+                    </p>
                   </div>
                   <div className="px-4 py-2">
-                    <h2 className="text-base font-medium text-[#1f1d21] group-hover:text-[#bc0031] group-hover:underline sm:text-sm  leading-[27.6px] mb-2">
+                    <h2 className="text-base font-medium text-[#1f1d21] sm:text-sm  leading-[27.6px] mb-2">
                       {article.title}
                     </h2>
                   </div>

@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 import News from "./News";
 import Publishers from "./Publishers";
@@ -8,6 +9,7 @@ const Layout = () => {
       <Navbar />
       <News />
       <Publishers />
+      <Footer />
     </div>
   );
 };

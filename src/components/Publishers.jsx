@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const Publishers = () => {
   const data = useSelector((state) => state.publisher.value);
   const dispatch = useDispatch();
+  console.log(data);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
@@ -18,9 +19,9 @@ const Publishers = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-white max-w-5xl  px-3 mx-auto pb-[64px] mt-20">
+    <div className="bg-white max-w-6xl rounded-lg px-3 mx-auto pb-[64px] mt-20">
       <h1
-        className={`text-[#1f1d21]  text-[30px] leading-[48px] font-semibold mb-[24px]`}
+        className={`text-gray-500 underline hover:text-[#bc0031] hover:no-underline cursor-pointer  text-[30px] leading-[48px] font-semibold mb-[24px]`}
       >
         Publishers
       </h1>
@@ -36,7 +37,7 @@ const Publishers = () => {
                 <div>
                   <Link
                     to={`/publisher/${item.id}/articles`}
-                    className="text-sm sm:text-[18px] mb-[20px] group-hover:text-[#bc0031] group-hover:underline leading-[27.6px] font-semibold"
+                    className="text-sm sm:text-[18px] text-gray-800 mb-[20px] group-hover:text-[#bc0031] group-hover:underline leading-[27.6px] font-semibold"
                   >
                     {item.name}
                   </Link>

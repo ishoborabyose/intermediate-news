@@ -31,40 +31,40 @@ const News = () => {
     );
   }
   return (
-    <div className="bg-white max-w-5xl  px-3 mx-auto sm:pt-20 pt-40">
+    <div className="bg-white max-w-6xl  px-3 mx-auto sm:pt-20 pt-40">
       <div className="flex justify-between">
         <h1
-          className={`text-[#1f1d21]  text-[30px] leading-[48px] font-semibold mb-[24px]`}
+          className={`text-gray-500 underline hover:text-[#bc0031] hover:no-underline cursor-pointer text-[30px] leading-[48px]  font-semibold mb-[24px]`}
         >
-          HEADLINES
+          News
         </h1>
       </div>
-      <div className="grid sm:grid-cols-1  grid-cols-3 gap-[24px]">
+      <div className="grid sm:grid-cols-1  grid-cols-4 gap-[24px]">
         {data &&
           data.map((item, index) => {
             return (
               <div
                 onClick={() => handleClick(item)}
                 key={index}
-                className={`${
-                  index === 0
-                    ? "col-span-3 sm:col-span-1  border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
-                    : "border  group hover:shadow-hov3 hover:duration-300  cursor-pointer"
-                }`}
+                className={` rounded-lg group hover:shadow-hov3  sm:col-span-1 border  group hover:duration-300  cursor-pointer ${
+                  index === 0 ? "col-span-2 " : ""
+                } ${index === 5 ? "col-span-2 " : ""} ${
+                  index === 6 ? "col-span-4 " : ""
+                }  ${index === 7 ? "col-span-2 " : ""} `}
               >
-                <div className="overflow-clip">
+                <div className="overflow-clip relative">
+                  <div className="bg-black opacity-25 rounded-lg absolute w-full h-full z-10"></div>
                   <img
                     src={item.urlToImage}
-                    className={`hover:scale-150 duration-500 cursor-pointer ${
-                      index === 0
-                        ? "h-[290px] sm:h-full w-full object-cover object-"
-                        : "w-full object-cover sm:h-full h-[190px] "
-                    } `}
+                    className="hover:scale-150 rounded-lg  duration-500 cursor-pointer w-full object-cover sm:h-full h-[190px]"
                   />
+                  <p className="text-white group-hover:shadow-hov3 font-bold bg-red-900 group-hover:bg-white group-hover:text-red-900 group-hover:underline p-1 absolute bottom-2 left-2 rounded-md z-20">
+                    Read More
+                  </p>
                 </div>
 
-                <div className="px-[1rem] pt-[1rem] pb-[1.5rem]">
-                  <h3 className="text-[#1f1d21] group-hover:text-[#bc0031] group-hover:underline sm:text-sm  text-base leading-[27.6px]  mb-4  font-semibold ">
+                <div className="px-[1rem] pb-4 pt-[1rem]">
+                  <h3 className=" text-gray-800 sm:text-sm  text-base leading-[27.6px]   font-semibold ">
                     {item.title}
                   </h3>
                 </div>
