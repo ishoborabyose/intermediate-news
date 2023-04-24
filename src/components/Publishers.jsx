@@ -36,7 +36,7 @@ const Publishers = () => {
                 <div>
                   <Link
                     to={`/publisher/${item.id}/articles`}
-                    className="text-base font-medium text-[#1f1d21] sm:text-sm  leading-[27.6px]  sm:text-[18px]  mb-[20px] group-hover:text-[#bc0031] group-hover:underline "
+                    className="text-base font-medium text-[#1f1d21] sm:text-sm  leading-[27.6px]  sm:text-[18px]  mb-[20px] group-hover:text-[#bc0031] group-hover:underline"
                   >
                     {item.name}
                   </Link>
