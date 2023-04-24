@@ -9,7 +9,7 @@ const OneArticle = ({ article }) => {
           {article.title}
         </h1>
       </div>
-      <div className="grid sm:grid-cols-1   gap-[24px]">
+      <div className="grid sm:grid-cols-1  cursor-pointer gap-[24px]">
         <div
           onClick={() => handleClick(article.url)}
           className="bg-white overflow-hidden shadow rounded-lg"
@@ -17,7 +17,7 @@ const OneArticle = ({ article }) => {
           <img
             className="object-cover h-96 w-full"
             src={article.urlToImage}
-            alt=""
+            alt={article.title}
           />
           <div className="p-4">
             <div className="flex items-center">
@@ -25,7 +25,7 @@ const OneArticle = ({ article }) => {
                 <img
                   className="h-10 w-10 rounded-full"
                   src={article.authorImage}
-                  alt=""
+                  alt={article.title}
                 />
               </div>
               <div className="ml-3">

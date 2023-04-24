@@ -56,6 +56,7 @@ const News = () => {
                   <div className="bg-black opacity-25 rounded-lg absolute w-full h-full z-10"></div>
                   <img
                     src={item.urlToImage}
+                    alt={item.title}
                     className="hover:scale-150 rounded-lg  duration-500 cursor-pointer w-full object-cover sm:h-full h-[190px]"
                   />
                   <p className="text-white group-hover:shadow-hov3 font-bold bg-red-900 group-hover:bg-white group-hover:text-red-900 group-hover:underline p-1 absolute bottom-2 left-2 rounded-md z-20">
@@ -64,9 +65,9 @@ const News = () => {
                 </div>
 
                 <div className="px-[1rem] pb-4 pt-[1rem]">
-                  <h3 className=" text-gray-800 sm:text-sm  text-base leading-[27.6px]   font-semibold ">
+                  <h2 className="text-base font-medium text-[#1f1d21] sm:text-sm  leading-[27.6px] mb-2">
                     {item.title}
-                  </h3>
+                  </h2>
                 </div>
               </div>
             );

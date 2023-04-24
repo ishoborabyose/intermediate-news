@@ -8,7 +8,8 @@ const Articles = () => {
   const { publisherId } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [scrolled, setScrolled] = useState(false);
-  const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
+  const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+  const BASE_URL = import.meta.env.VITE_NEWS_URL;
 
   const handleSearch = (event) => setSearchQuery(event.target.value);
 
@@ -24,7 +25,7 @@ const Articles = () => {
   useEffect(() => {
     const fetchDataAsync = async () => {
       const response = await fetch(
-        `https://news-proxy.netlify.app/api/top-headlines?sources=${publisherId}&apiKey=${API_KEY}`
+        `${BASE_URL}?sources=${publisherId}&apiKey=${API_KEY}`
       );
       const data = await response.json();
       dispatch(getNews(data.articles));
@@ -131,13 +132,6 @@ const Articles = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {/* <div className="h-[200px] overflow-clip">
-                    <img
-                      src={article.urlToImage}
-                      alt={article.title}
-                      className="object-cover rounded-lg w-full h-full hover:scale-150 duration-500 cursor-pointer"
-                    />
-                  </div> */}
                   <div className="overflow-clip relative">
                     <div className="bg-black opacity-25 rounded-lg absolute w-full h-full z-10"></div>
                     <img

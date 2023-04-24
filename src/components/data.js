@@ -1,5 +1,5 @@
-const API_KEY = "a1a54883b8e54f7c86caf9b352e6610a";
-const BASE_URL = "https://news-proxy.netlify.app/api/top-headlines";
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+const BASE_URL = import.meta.env.VITE_NEWS_URL;
 
 export async function fetchData(searchQuery = "", publisherId = "") {
   const url = `${BASE_URL}?country=us&apiKey=${API_KEY}&pageSize=10${
