@@ -57,23 +57,23 @@ const Navbar = () => {
               <span className="relative z-10 text-gray-500 transform -rotate-45 mr-1 text-xs">
                 f
               </span>
-              <span className="relative z-10 text-blue-500 transform -rotate-45 text-xs">
+              <span className="relative z-10 text-[#bc0031] transform -rotate-45 text-xs">
                 low
               </span>
             </h1>
           </div>
         ) : (
-          <div className="bg-gray-900 text-white h-14 w-48 flex justify-center items-center rounded-lg shadow-lg relative">
-            <span className="absolute top-0 left-0 w-16 h-14 flex justify-center items-center bg-gray-800 rounded-full">
-              <span className="text-xl font-extrabold text-white transform -rotate-45">
+          <div className="bg-gray-900 text-white h-14 w-48 sm:h-10 sm:w-32 flex justify-center items-center rounded-lg shadow-lg relative">
+            <span className="absolute top-0 left-0 w-16 h-14 sm:w-10  sm:h-10  flex justify-center items-center bg-gray-800 rounded-full">
+              <span className="text-xl sm:text-sm font-extrabold text-white transform -rotate-45">
                 NEWS
               </span>
             </span>
-            <h1 className="font-bold text-lg tracking-widest uppercase">
+            <h1 className="font-bold text-lg sm:text-sm  tracking-widest uppercase">
               <span className="relative z-10 text-gray-500 transform -rotate-45 mr-1">
                 f
               </span>
-              <span className="relative z-10 text-blue-500 transform -rotate-45">
+              <span className="relative z-10 text-[#bc0031] transform -rotate-45">
                 low
               </span>
             </h1>
