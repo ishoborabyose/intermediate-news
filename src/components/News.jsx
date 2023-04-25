@@ -53,7 +53,7 @@ const News = () => {
                 }  ${index === 7 ? "col-span-2 " : ""} `}
               >
                 <div className="overflow-clip relative">
-                  <div className="bg-black opacity-25 rounded-lg absolute w-full h-full z-10"></div>
+                  <div className="bg-black opacity-25 group-hover:opacity-50 rounded-lg absolute w-full h-full z-10"></div>
                   <img
                     src={item.urlToImage}
                     alt={item.title}
