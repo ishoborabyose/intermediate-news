@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getNews } from "../features/news";
 import { CiSearch } from "react-icons/ci";
+import Footer from "./Footer";
 
 const Articles = () => {
   const { publisherId } = useParams();
@@ -154,6 +155,7 @@ const Articles = () => {
           })}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
