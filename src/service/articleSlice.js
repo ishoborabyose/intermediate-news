@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "@reduxjs/toolkit";
 const initialValue = [];
 
 export const ArticlesSlice = createSlice({
@@ -6,7 +7,12 @@ export const ArticlesSlice = createSlice({
   initialState: { value: initialValue },
   reducers: {
     getTopArticles: (state, action) => {
-      state.value = action.payload;
+      // Add unique ID to each article
+      const articlesWithIds = action.payload.map((article) => ({
+        ...article,
+        idss: nanoid(),
+      }));
+      state.value = articlesWithIds;
     },
 
     searchArticle: (state, action) => {

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchDataPublishers } from "./data";
-import { getPublishers } from "../features/publishers";
+import { fetchDataPublishers } from "../data/data";
+import { getPublishers } from "../service/publisherSlice";
 import { Link } from "react-router-dom";
 
 const Publishers = () => {
@@ -27,10 +27,10 @@ const Publishers = () => {
 
       <div className=" grid grid-cols-5 sm:grid-cols-1 gap-[24px] ">
         {data &&
-          data.map((item, index) => {
+          data.map((item) => {
             return (
               <div
-                key={index}
+                key={item.id}
                 className="bg-[#ffffff] cursor-pointer  group hover:shadow-hov3 hover:duration-300 ease-in-out rounded-sm py-[10px] px-[10px]  gap-[8px] border"
               >
                 <div>

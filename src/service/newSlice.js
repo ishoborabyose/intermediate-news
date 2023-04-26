@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "@reduxjs/toolkit";
 
 const initialValue = [];
 
@@ -7,7 +8,12 @@ export const newsSlice = createSlice({
   initialState: { value: initialValue },
   reducers: {
     getNews: (state, action) => {
-      state.value = action.payload;
+      // Add unique ID to each article
+      const articlesWithIds = action.payload.map((article) => ({
+        ...article,
+        id: nanoid(),
+      }));
+      state.value = articlesWithIds;
     },
   },
 });

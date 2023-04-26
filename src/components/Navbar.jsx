@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { fetchData } from "./data";
-import { searchArticle } from "../features/articles";
+import { fetchData } from "../data/data";
+import { searchArticle } from "../service/articleSlice";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -25,11 +26,13 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const fetchDataAsync = async () => {
-      const data = await fetchData(searchQuery);
-      dispatch(searchArticle({ articles: data.articles, searchQuery }));
-    };
-    fetchDataAsync();
+    if (searchQuery !== "") {
+      const fetchDataAsync = async () => {
+        const data = await fetchData(searchQuery);
+        dispatch(searchArticle({ articles: data.articles, searchQuery }));
+      };
+      fetchDataAsync();
+    }
   }, [dispatch, searchQuery]);
 
   const performSearch = () => {
@@ -47,7 +50,10 @@ const Navbar = () => {
         }`}
       >
         {scrolled ? (
-          <div className=" text-white h-10 w-32 flex justify-center items-center rounded-lg shadow-sm relative">
+          <Link
+            to="/"
+            className=" text-white h-10 w-32 flex justify-center items-center rounded-lg shadow-sm relative"
+          >
             <span className="absolute top-0 left-0 w-10  h-10 flex justify-center items-center  rounded-full">
               <span className="text-sm font-extrabold  text-gray-800 transform -rotate-45">
                 NEWS
@@ -61,9 +67,12 @@ const Navbar = () => {
                 low
               </span>
             </h1>
-          </div>
+          </Link>
         ) : (
-          <div className=" text-white h-[42px] w-48 sm:h-10 sm:w-32 flex justify-center items-center rounded-lg shadow-sm relative">
+          <Link
+            to="/"
+            className=" text-white h-[42px] w-48 sm:h-10 sm:w-32 flex justify-center items-center rounded-lg shadow-sm relative"
+          >
             <span className="absolute top-0 left-0 w-14 h-10 sm:w-10  sm:h-10  flex justify-center items-center  rounded-full">
               <span className="text-base sm:text-sm font-extrabold  text-gray-800 transform -rotate-45">
                 NEWS
@@ -77,7 +86,7 @@ const Navbar = () => {
                 low
               </span>
             </h1>
-          </div>
+          </Link>
         )}
         <div className="flex items-center gap-[12px] sm:hidden ">
           <div className=" relative flex mr-[1px] ">
