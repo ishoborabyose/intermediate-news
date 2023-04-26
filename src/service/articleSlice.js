@@ -10,7 +10,7 @@ export const ArticlesSlice = createSlice({
       // Add unique ID to each article
       const articlesWithIds = action.payload.map((article) => ({
         ...article,
-        idss: nanoid(),
+        id: nanoid(),
       }));
       state.value = articlesWithIds;
     },

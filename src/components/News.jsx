@@ -44,7 +44,7 @@ const News = () => {
         {data.map((item, index) => {
           return (
             <div
-              key={item.idss}
+              key={item.id}
               onClick={() => handleClick(item)}
               className={` rounded-lg group hover:shadow-hov3  sm:col-span-1 border  group hover:duration-300  cursor-pointer ${
                 index === 0 ? "col-span-2 " : ""
