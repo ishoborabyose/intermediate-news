@@ -1,0 +1,48 @@
+.gallery {
+	display: grid;
+	grid-gap: 10px;
+}
+
+.gallery img {
+	width: 100%;
+	height: 40vh;
+	object-fit: cover;
+	filter: grayscale(100%) contrast(1.5);
+	background: #ffffff;
+  display: inline-block;
+  margin: 55px 75px 36px;
+  padding: 15px 15px 36px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .5);
+  transition: all .20s linear;
+  z-index: 0;
+  position: relative;
+}
+
+img:nth-child(even) {
+	transform: rotate(-4deg)
+}
+
+img:nth-child(odd) {
+	transform: rotate(7deg)
+}
+
+@media (min-width: 768px) {
+	.gallery {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 992px) {
+	.gallery {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 767px) {
+	.gallery img {
+		min-width: 100%;
+		height: auto;
+	}
+}
